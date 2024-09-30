@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#controls {
+    margin-bottom: 20px;
+}
+
+#info {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-bottom: 20px;
+}
+
+#cards-grid {
+    display: none; /* 初始隱藏 */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 400px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+    position: relative;
+    transition: transform 0.3s ease; /* 更快的翻轉速度 */
+    border: 2px solid #333; /* 添加2px黑色邊框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影效果讓卡牌更立體 */
+    border-radius: 10px; /* 圓角讓邊框更柔和 */
+    perspective: 1000px; /* 添加透視效果 */
+}
+
+
+.card .front, .card .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.3s;
+}
+
+.card .front {
+    transform: rotateY(0deg);
+    background-size: cover;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+    background-size: cover;
+}
+
+.card.flipped .front {
+    transform: rotateY(180deg);
+}
+
+.card.flipped .back {
+    transform: rotateY(360deg);
+}
+
+#timer, #score {
+    font-size: 18px;
+}
